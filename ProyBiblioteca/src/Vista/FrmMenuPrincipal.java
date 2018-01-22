@@ -41,6 +41,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        btnConsultaLibro.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         btnConsultaLibro.setText("Consulta Libro");
         btnConsultaLibro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,6 +63,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        btnConsultareservas.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         btnConsultareservas.setText("Consultar Reservas");
         btnConsultareservas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,6 +71,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btnnuevousuario.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         btnnuevousuario.setText("Nuevo Usuario");
         btnnuevousuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,6 +79,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btnRegistrarLibro.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         btnRegistrarLibro.setText("Registrar Libro");
         btnRegistrarLibro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,8 +113,8 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
@@ -121,9 +125,8 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
                         .addComponent(btnnuevousuario)
                         .addGap(18, 18, 18)
                         .addComponent(btnRegistrarLibro)
-                        .addContainerGap(448, Short.MAX_VALUE))
+                        .addContainerGap(450, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(panelprincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())))
         );

@@ -58,7 +58,7 @@
                           <Component id="btnconsultar" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnlimpiar" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnDevolucion" max="32767" attributes="0"/>
-                          <Component id="jButton1" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="jButton1" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                   </Group>
