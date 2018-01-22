@@ -131,7 +131,7 @@ DROP TABLE IF EXISTS `BD_BiBLIOTECA`.`Registro` ;
 
 CREATE TABLE IF NOT EXISTS `BD_BiBLIOTECA`.`Registro` (
   `idRegistro` INT NOT NULL AUTO_INCREMENT,
-  `idusuario` VARCHAR(6) NOT NULL,
+  `idusuario` VARCHAR(8) NOT NULL,
   `idlibro` VARCHAR(6) NOT NULL,
   `reg_horareserva` DATETIME NOT NULL,
   `reg_horadevolucion` DATETIME NULL,
