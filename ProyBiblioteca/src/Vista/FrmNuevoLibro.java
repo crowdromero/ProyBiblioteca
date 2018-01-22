@@ -5,6 +5,9 @@
  */
 package Vista;
 
+import Control.GeneroDAO;
+import Control.IdiomaDAO;
+
 /**
  *
  * @author Xen
@@ -14,8 +17,15 @@ public class FrmNuevoLibro extends javax.swing.JPanel {
     /**
      * Creates new form FrmConsultaLibro
      */
+    
+    public static String autor="";
+    public static String editorial="";
+    
     public FrmNuevoLibro() {
         initComponents();
+        IdiomaDAO.llenarComboIdioma(cboidioma);
+        GeneroDAO.llenarComboGenero(cbogenero);
+        
     }
 
     /**
@@ -32,7 +42,7 @@ public class FrmNuevoLibro extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btnlimpiar = new javax.swing.JButton();
-        txtregistrar = new javax.swing.JButton();
+        btnregistrar = new javax.swing.JButton();
         txttitulo = new javax.swing.JTextField();
         txtautor = new javax.swing.JTextField();
         txteditorial = new javax.swing.JTextField();
@@ -65,8 +75,16 @@ public class FrmNuevoLibro extends javax.swing.JPanel {
             }
         });
 
-        txtregistrar.setText("Registrar");
+        btnregistrar.setText("Registrar");
+        btnregistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnregistrarActionPerformed(evt);
+            }
+        });
 
+        txtautor.setEditable(false);
+
+        txteditorial.setEditable(false);
         txteditorial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txteditorialActionPerformed(evt);
@@ -116,26 +134,25 @@ public class FrmNuevoLibro extends javax.swing.JPanel {
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtautor, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
-                                    .addComponent(txttitulo)
-                                    .addComponent(txteditorial))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btnbuscarAutor, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
-                                    .addComponent(btnBuscarEditorial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txttitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(txteditorial, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                                        .addComponent(txtautor, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(btnbuscarAutor, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
+                                        .addComponent(btnBuscarEditorial, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(290, 290, 290)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(dtcfecpublicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(157, 157, 157)))
+                                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(dtcfecpublicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtpaginas)
                                     .addComponent(txtcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -143,10 +160,10 @@ public class FrmNuevoLibro extends javax.swing.JPanel {
                             .addComponent(cbogenero, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(173, 173, 173)
-                        .addComponent(txtregistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnregistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(174, 174, 174)
                         .addComponent(btnlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(168, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,7 +206,7 @@ public class FrmNuevoLibro extends javax.swing.JPanel {
                             .addComponent(txtcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtregistrar)
+                    .addComponent(btnregistrar)
                     .addComponent(btnlimpiar))
                 .addContainerGap(144, Short.MAX_VALUE))
         );
@@ -197,6 +214,11 @@ public class FrmNuevoLibro extends javax.swing.JPanel {
 
     private void btnlimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlimpiarActionPerformed
         // TODO add your handling code here:
+        txtautor.setText(null);
+        txtcantidad.setText(null);
+        txteditorial.setText(null);
+        txttitulo.setText(null);
+        txtpaginas.setText(null);
     }//GEN-LAST:event_btnlimpiarActionPerformed
 
     private void txteditorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txteditorialActionPerformed
@@ -217,11 +239,22 @@ public class FrmNuevoLibro extends javax.swing.JPanel {
         buscareditorial.setLocationRelativeTo(this);
     }//GEN-LAST:event_btnBuscarEditorialActionPerformed
 
+    private void btnregistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregistrarActionPerformed
+        // TODO add your handling code here:
+        String titulo=txttitulo.getText();
+        String genero=GeneroDAO.obtenercodigo(cbogenero.getSelectedItem().toString());
+        String idioma=IdiomaDAO.obtenercodigo(cboidioma.getSelectedItem().toString());
+        
+        System.out.println(autor+" "+editorial+" "+genero+" "+idioma);
+        
+    }//GEN-LAST:event_btnregistrarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarEditorial;
     private javax.swing.JButton btnbuscarAutor;
     private javax.swing.JButton btnlimpiar;
+    private javax.swing.JButton btnregistrar;
     private javax.swing.JComboBox cbogenero;
     private javax.swing.JComboBox cboidioma;
     private com.toedter.calendar.JDateChooser dtcfecpublicacion;
@@ -233,11 +266,10 @@ public class FrmNuevoLibro extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JTextField txtautor;
+    public static javax.swing.JTextField txtautor;
     private javax.swing.JTextField txtcantidad;
-    private javax.swing.JTextField txteditorial;
+    public static javax.swing.JTextField txteditorial;
     private javax.swing.JTextField txtpaginas;
-    private javax.swing.JButton txtregistrar;
     private javax.swing.JTextField txttitulo;
     // End of variables declaration//GEN-END:variables
 }

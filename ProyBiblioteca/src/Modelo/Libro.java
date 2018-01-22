@@ -19,6 +19,8 @@ public class Libro {
     private String lib_fecpub;
     private String genero;
     private String lib_cantidad;
+    private String paginas;
+    
 
     public Libro() {
     }
@@ -33,6 +35,20 @@ public class Libro {
         this.genero = genero;
         this.lib_cantidad = lib_cantidad;
     }
+
+    public Libro(String idlibro, String lib_titulo, String autor_nombre, String autor_apellido, String ed_nombre, String lib_fecpub, String genero, String lib_cantidad, String paginas) {
+        this.idlibro = idlibro;
+        this.lib_titulo = lib_titulo;
+        this.autor_nombre = autor_nombre;
+        this.autor_apellido = autor_apellido;
+        this.ed_nombre = ed_nombre;
+        this.lib_fecpub = lib_fecpub;
+        this.genero = genero;
+        this.lib_cantidad = lib_cantidad;
+        this.paginas = paginas;
+    }
+    
+    
 
     public String getLib_cantidad() {
         return lib_cantidad;
@@ -96,6 +112,14 @@ public class Libro {
 
     public void setGenero(String genero) {
         this.genero = genero;
+    }
+
+    public String getPaginas() {
+        return paginas;
+    }
+
+    public void setPaginas(String paginas) {
+        this.paginas = paginas;
     }
     
             

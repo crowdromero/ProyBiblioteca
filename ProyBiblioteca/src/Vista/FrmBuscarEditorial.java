@@ -5,6 +5,8 @@
  */
 package Vista;
 
+import Control.EditorialDAO;
+
 /**
  *
  * @author Xen
@@ -16,6 +18,7 @@ public class FrmBuscarEditorial extends javax.swing.JFrame {
      */
     public FrmBuscarEditorial() {
         initComponents();
+        EditorialDAO.llenarTablaEditorial(jTable1, txteditorial.getText());
     }
 
     /**
@@ -51,6 +54,11 @@ public class FrmBuscarEditorial extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         btnseleccionar.setText("Seleccionar");
+        btnseleccionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnseleccionarActionPerformed(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -59,6 +67,11 @@ public class FrmBuscarEditorial extends javax.swing.JFrame {
         jLabel2.setText("Editorial");
 
         btnbuscarAutor.setText("Buscar");
+        btnbuscarAutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbuscarAutorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,6 +111,36 @@ public class FrmBuscarEditorial extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnbuscarAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarAutorActionPerformed
+        // TODO add your handling code here:
+        EditorialDAO.llenarTablaEditorial(jTable1, txteditorial.getText());
+    }//GEN-LAST:event_btnbuscarAutorActionPerformed
+
+    private void btnseleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnseleccionarActionPerformed
+        // TODO add your handling code here:
+       int row = jTable1.getSelectedRow();
+       String id=jTable1.getValueAt(row, 0).toString();
+       String name=jTable1.getValueAt(row, 1).toString();
+       
+       try {
+            FrmNuevoLibro.editorial=id;
+            FrmNuevoLibro.txteditorial.setText(name);
+            
+       } catch (Exception e) {
+            System.out.println("Ventana Nuevo libro no abierta");
+       }
+       
+       try {
+            FrmModificarLibro.editorial=id;
+            FrmModificarLibro.txteditorial.setText(name);
+            
+       } catch (Exception e) {
+            System.out.println("Ventana Modificar libro no abierta");
+       }
+       
+       dispose();
+    }//GEN-LAST:event_btnseleccionarActionPerformed
 
     /**
      * @param args the command line arguments

@@ -5,6 +5,8 @@
  */
 package Vista;
 
+import Control.AutorDAO;
+
 /**
  *
  * @author Xen
@@ -16,6 +18,7 @@ public class FrmBuscarAutor extends javax.swing.JFrame {
      */
     public FrmBuscarAutor() {
         initComponents();
+        AutorDAO.llenarTablaAutor(jTable1, txtautor.getText(),txtapellido.getText());
     }
 
     /**
@@ -34,6 +37,7 @@ public class FrmBuscarAutor extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         btnseleccionar = new javax.swing.JButton();
+        txtapellido = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -44,6 +48,11 @@ public class FrmBuscarAutor extends javax.swing.JFrame {
         jLabel2.setText("Autor");
 
         btnbuscarAutor.setText("Buscar");
+        btnbuscarAutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbuscarAutorActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -59,6 +68,11 @@ public class FrmBuscarAutor extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         btnseleccionar.setText("Seleccionar");
+        btnseleccionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnseleccionarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -70,25 +84,28 @@ public class FrmBuscarAutor extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtautor, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
+                        .addComponent(txtautor, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(btnbuscarAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)
-                        .addComponent(btnseleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(40, Short.MAX_VALUE))
+                        .addComponent(btnseleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtautor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnbuscarAutor)
-                    .addComponent(btnseleccionar))
+                    .addComponent(btnseleccionar)
+                    .addComponent(txtapellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(39, Short.MAX_VALUE))
@@ -96,6 +113,37 @@ public class FrmBuscarAutor extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnbuscarAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarAutorActionPerformed
+        // TODO add your handling code here:
+        AutorDAO.llenarTablaAutor(jTable1, txtautor.getText(),txtapellido.getText());
+        
+    }//GEN-LAST:event_btnbuscarAutorActionPerformed
+
+    private void btnseleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnseleccionarActionPerformed
+        // TODO add your handling code here:
+       int row = jTable1.getSelectedRow();
+       String id=jTable1.getValueAt(row, 0).toString();
+       String name=jTable1.getValueAt(row, 1).toString();
+       String apellido=jTable1.getValueAt(row, 2).toString();
+        try {
+            FrmNuevoLibro.autor=id;
+            FrmNuevoLibro.txtautor.setText(name +" "+ apellido);
+            
+        } catch (Exception e) {
+            System.out.println("Ventana Nuevo libro no abierta");
+        }
+        
+        try {
+            FrmModificarLibro.autor=id;
+            FrmModificarLibro.txtautor.setText(name +" "+ apellido);
+            
+        } catch (Exception e) {
+            System.out.println("Ventana Modificar libro no abierta");
+        }
+       
+       dispose();
+    }//GEN-LAST:event_btnseleccionarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,6 +187,7 @@ public class FrmBuscarAutor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField txtapellido;
     private javax.swing.JTextField txtautor;
     // End of variables declaration//GEN-END:variables
 }

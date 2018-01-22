@@ -5,6 +5,8 @@
  */
 package Vista;
 
+import Control.LibroDAO;
+
 /**
  *
  * @author Xen
@@ -16,6 +18,7 @@ public class FrmConsultaLibro extends javax.swing.JPanel {
      */
     public FrmConsultaLibro() {
         initComponents();
+        LibroDAO.llenarTablaMedico(jTable1, txttitulo.getText(), txtautor.getText(), txtautor.getText(), txteditorial.getText(), txtgenero.getText());
     }
 
     /**

@@ -5,6 +5,9 @@
  */
 package Vista;
 
+import Control.GeneroDAO;
+import Control.IdiomaDAO;
+
 /**
  *
  * @author Xen
@@ -14,8 +17,14 @@ public class FrmModificarLibro extends javax.swing.JFrame {
     /**
      * Creates new form FrmModificarLibro
      */
+    
+    public static String autor="";
+    public static String editorial="";
+    
     public FrmModificarLibro() {
         initComponents();
+        IdiomaDAO.llenarComboIdioma(cboidioma);
+        GeneroDAO.llenarComboGenero(cbogenero);
     }
 
     /**
@@ -56,15 +65,23 @@ public class FrmModificarLibro extends javax.swing.JFrame {
         jLabel5.setText("Paginas");
 
         btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Idioma");
 
         jLabel1.setText("Titulo");
 
+        txtautor.setEditable(false);
+
         jLabel7.setText("Cantidad");
 
         jLabel2.setText("Autor");
 
+        txteditorial.setEditable(false);
         txteditorial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txteditorialActionPerformed(evt);
@@ -125,15 +142,16 @@ public class FrmModificarLibro extends javax.swing.JFrame {
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtautor)
-                            .addComponent(txttitulo)
-                            .addComponent(txteditorial, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnbuscarAutor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnBuscarEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txttitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txteditorial, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+                                .addComponent(txtautor, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(btnbuscarAutor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnBuscarEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
@@ -149,7 +167,7 @@ public class FrmModificarLibro extends javax.swing.JFrame {
                     .addComponent(cboidioma, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbogenero, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtidlibro, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(75, 75, 75))
+                .addGap(158, 158, 158))
             .addGroup(layout.createSequentialGroup()
                 .addGap(138, 138, 138)
                 .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -233,6 +251,10 @@ public class FrmModificarLibro extends javax.swing.JFrame {
         buscareditorial.setLocationRelativeTo(this);
     }//GEN-LAST:event_btnBuscarEditorialActionPerformed
 
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnModificarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -286,9 +308,9 @@ public class FrmModificarLibro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField txtautor;
+    public static javax.swing.JTextField txtautor;
     private javax.swing.JTextField txtcantidad;
-    private javax.swing.JTextField txteditorial;
+    public static javax.swing.JTextField txteditorial;
     private javax.swing.JTextField txtidlibro;
     private javax.swing.JTextField txtpaginas;
     private javax.swing.JTextField txttitulo;
