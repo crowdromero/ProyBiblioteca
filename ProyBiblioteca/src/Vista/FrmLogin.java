@@ -6,6 +6,7 @@
 package Vista;
 
 import Control.UsuarioDAO;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -141,17 +142,10 @@ public class FrmLogin extends javax.swing.JFrame {
 			JOptionPane.showMessageDialog(this,"Ingrese un usuario");
 		}
 		if (txtUsuario.getText().trim().length()>0 && txtpwPassword.getText().trim().length()>0) {
-                char[] arrayC = txtpwPassword.getPassword(); 
-                String pass = new String(arrayC);    
-                
-                boolean paracerrar=  UsuarioDAO.ingresar(txtUsuario.getText(),pass);  
-                    
-                    if (paracerrar) {
-                        System.out.println("que carajo pasa!");
-                        dispose();
-                    }
-                    
-                    
+                    char[] arrayC = txtpwPassword.getPassword(); 
+                    String pass = new String(arrayC);    
+                    UsuarioDAO.ingresar(txtUsuario.getText(),pass,this);  
+                 
 		}
     }//GEN-LAST:event_btnIngresarActionPerformed
 

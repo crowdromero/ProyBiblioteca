@@ -12,6 +12,7 @@ import java.awt.Dimension;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -45,7 +46,7 @@ public class UsuarioDAO {
 		return usuario;
 	}
     
-    public static boolean ingresar(String usuario,String contraseña) {
+    public static void ingresar(String usuario,String contraseña,JFrame vista) {
 		
 			
 		Usuario usu=new Usuario();
@@ -53,21 +54,21 @@ public class UsuarioDAO {
 		usu.setContraseña(contraseña);
 		
 		Usuario usu1=UsuarioDAO.obtenerUsuario(usu);
-		boolean retorno=true;
+		
 		if(usu1!=null) {
 			JOptionPane.showMessageDialog(null, "Bienvenido");
 			FrmMenuPrincipal frame=new FrmMenuPrincipal();
-        
                         frame.setVisible(true);
-                        Dimension dim = frame.getToolkit().getScreenSize();
-                        frame.setLocationRelativeTo(frame);
-                        frame.setSize(dim);
+                        //Dimension dim = frame.getToolkit().getScreenSize();
+                        //frame.setLocationRelativeTo(frame);
+                        //frame.setSize(dim);
+                        vista.dispose();
                         
 		}else {
 			JOptionPane.showMessageDialog(null, "Datos Invalidos","Error",JOptionPane.ERROR_MESSAGE);
-                        retorno=false;
+                        
 		}
-                return retorno;
+                
         }
     
 }

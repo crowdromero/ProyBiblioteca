@@ -18,7 +18,7 @@ public class ProyBiblioteca {
         // TODO code application logic here
         FrmLogin login=new FrmLogin();
         login.setVisible(true);
-        login.setLocationRelativeTo(login);
+        login.setLocationRelativeTo(null);
     }
     
 }

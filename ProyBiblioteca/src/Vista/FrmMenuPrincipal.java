@@ -5,6 +5,10 @@
  */
 package Vista;
 
+import java.awt.BorderLayout;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Xen
@@ -16,6 +20,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
      */
     public FrmMenuPrincipal() {
         initComponents();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     /**
@@ -27,21 +32,149 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnConsultaLibro = new javax.swing.JButton();
+        panelprincipal = new javax.swing.JPanel();
+        btnConsultareservas = new javax.swing.JButton();
+        btnnuevousuario = new javax.swing.JButton();
+        btnRegistrarLibro = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        btnConsultaLibro.setText("Consulta Libro");
+        btnConsultaLibro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultaLibroActionPerformed(evt);
+            }
+        });
+
+        panelprincipal.setAlignmentX(150.0F);
+        panelprincipal.setAlignmentY(10.0F);
+
+        javax.swing.GroupLayout panelprincipalLayout = new javax.swing.GroupLayout(panelprincipal);
+        panelprincipal.setLayout(panelprincipalLayout);
+        panelprincipalLayout.setHorizontalGroup(
+            panelprincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1008, Short.MAX_VALUE)
+        );
+        panelprincipalLayout.setVerticalGroup(
+            panelprincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        btnConsultareservas.setText("Consultar Reservas");
+        btnConsultareservas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultareservasActionPerformed(evt);
+            }
+        });
+
+        btnnuevousuario.setText("Nuevo Usuario");
+        btnnuevousuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnnuevousuarioActionPerformed(evt);
+            }
+        });
+
+        btnRegistrarLibro.setText("Registrar Libro");
+        btnRegistrarLibro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarLibroActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("BIBLIOTECA MUNICIPAL");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(btnConsultaLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnConsultareservas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnnuevousuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnRegistrarLibro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(29, 29, 29)
+                .addComponent(panelprincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(38, Short.MAX_VALUE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(btnConsultaLibro)
+                        .addGap(30, 30, 30)
+                        .addComponent(btnConsultareservas)
+                        .addGap(89, 89, 89)
+                        .addComponent(btnnuevousuario)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnRegistrarLibro)
+                        .addContainerGap(448, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(panelprincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnConsultaLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaLibroActionPerformed
+        // TODO add your handling code here:
+        FrmConsultaLibro panelclibro=new FrmConsultaLibro();
+        panelclibro.setSize(1000, 650);
+        panelclibro.setLocation(1,1);
+        panelprincipal.removeAll();
+        panelprincipal.add(panelclibro,BorderLayout.CENTER);
+        panelprincipal.revalidate();
+        panelprincipal.repaint();
+        
+    }//GEN-LAST:event_btnConsultaLibroActionPerformed
+
+    private void btnConsultareservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultareservasActionPerformed
+        // TODO add your handling code here:
+        FrmConsultaReserva panelcreserva=new FrmConsultaReserva();
+        panelcreserva.setSize(1000, 650);
+        panelcreserva.setLocation(1,1);
+        panelprincipal.removeAll();
+        panelprincipal.add(panelcreserva,BorderLayout.CENTER);
+        panelprincipal.revalidate();
+        panelprincipal.repaint();
+    }//GEN-LAST:event_btnConsultareservasActionPerformed
+
+    private void btnnuevousuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnuevousuarioActionPerformed
+        // TODO add your handling code here:
+        FrmNuevoUsuario panelcnuevousuario=new FrmNuevoUsuario();
+        panelcnuevousuario.setSize(1000, 650);
+        panelcnuevousuario.setLocation(1,1);
+        panelprincipal.removeAll();
+        panelprincipal.add(panelcnuevousuario,BorderLayout.CENTER);
+        panelprincipal.revalidate();
+        panelprincipal.repaint();
+    }//GEN-LAST:event_btnnuevousuarioActionPerformed
+
+    private void btnRegistrarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarLibroActionPerformed
+        // TODO add your handling code here:
+        FrmNuevoLibro panelnuevoLibro=new FrmNuevoLibro();
+        panelnuevoLibro.setSize(1000, 650);
+        panelnuevoLibro.setLocation(1,1);
+        panelprincipal.removeAll();
+        panelprincipal.add(panelnuevoLibro,BorderLayout.CENTER);
+        panelprincipal.revalidate();
+        panelprincipal.repaint();
+    }//GEN-LAST:event_btnRegistrarLibroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +212,11 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnConsultaLibro;
+    private javax.swing.JButton btnConsultareservas;
+    private javax.swing.JButton btnRegistrarLibro;
+    private javax.swing.JButton btnnuevousuario;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel panelprincipal;
     // End of variables declaration//GEN-END:variables
 }
