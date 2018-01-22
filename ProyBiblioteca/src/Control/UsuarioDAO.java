@@ -59,6 +59,9 @@ public class UsuarioDAO {
 			JOptionPane.showMessageDialog(null, "Bienvenido");
 			FrmMenuPrincipal frame=new FrmMenuPrincipal();
                         frame.setVisible(true);
+                        frame.btnnuevousuario.setVisible(false);
+                        frame.btnRegistrarLibro.setVisible(false);
+                        frame.btnConsultareservas.setVisible(false);
                         //Dimension dim = frame.getToolkit().getScreenSize();
                         //frame.setLocationRelativeTo(frame);
                         //frame.setSize(dim);

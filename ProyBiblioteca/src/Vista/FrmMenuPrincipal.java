@@ -216,9 +216,9 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConsultaLibro;
-    private javax.swing.JButton btnConsultareservas;
-    private javax.swing.JButton btnRegistrarLibro;
-    private javax.swing.JButton btnnuevousuario;
+    public static javax.swing.JButton btnConsultareservas;
+    public static javax.swing.JButton btnRegistrarLibro;
+    public static javax.swing.JButton btnnuevousuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel panelprincipal;
     // End of variables declaration//GEN-END:variables

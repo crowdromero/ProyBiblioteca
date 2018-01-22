@@ -16,7 +16,7 @@ public class ProyBiblioteca {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        FrmLogin login=new FrmLogin();
+        FrmUsuarioTrabajador login=new FrmUsuarioTrabajador();
         login.setVisible(true);
         login.setLocationRelativeTo(null);
     }
