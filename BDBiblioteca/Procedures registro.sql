@@ -153,7 +153,7 @@ and autor_apellido like CONCAT ('%', apellido, '%');
 end&&
 delimiter ;
 
-call sp_consultar_Autor('a','e');
+call sp_consultar_Autor('','');
 
 select * from Autor;
 
@@ -268,4 +268,40 @@ delimiter ;
 
 call sp_Consultar_Registro('libro','76346254');
 
+
+/*
+
+Procedure  Listado Idiomas
+
+*/
+
+drop procedure if exists sp_Consultar_Idioma;
+
+delimiter &&
+create procedure sp_Consultar_Idioma()
+begin
+select * from idioma;
+end&&
+delimiter ;
+
+call sp_Consultar_Idioma();
+
+
+
+/*
+
+Procedure  Listado Idiomas
+
+*/
+
+drop procedure if exists sp_Consultar_Genero;
+
+delimiter &&
+create procedure sp_Consultar_Genero()
+begin
+select * from genero;
+end&&
+delimiter ;
+
+call sp_Consultar_Genero();
 
