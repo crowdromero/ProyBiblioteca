@@ -17,8 +17,10 @@ public class FrmConfirmarUsuario extends javax.swing.JFrame {
     /**
      * Creates new form FrmConfirmarUsuario
      */
+    public static String libro;
     public FrmConfirmarUsuario() {
         initComponents();
+        
     }
 
     /**
@@ -140,8 +142,8 @@ public class FrmConfirmarUsuario extends javax.swing.JFrame {
         if (txtUsuario.getText().trim().length()>0 && txtpwPassword.getText().trim().length()>0) {
             char[] arrayC = txtpwPassword.getPassword();
             String pass = new String(arrayC);
-            UsuarioDAO.ingresar(txtUsuario.getText(),pass,this);
-
+            UsuarioDAO.ConfirmarUsuario(txtUsuario.getText(),pass,libro,this);
+            
         }
     }//GEN-LAST:event_btnconfirmarActionPerformed
 

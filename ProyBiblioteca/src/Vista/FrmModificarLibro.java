@@ -7,6 +7,10 @@ package Vista;
 
 import Control.GeneroDAO;
 import Control.IdiomaDAO;
+import Control.LibroDAO;
+import Control.Reutil;
+import Modelo.Libro;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,8 +27,18 @@ public class FrmModificarLibro extends javax.swing.JFrame {
     
     public FrmModificarLibro() {
         initComponents();
+        
+        
         IdiomaDAO.llenarComboIdioma(cboidioma);
         GeneroDAO.llenarComboGenero(cbogenero);
+        
+        for (Libro lib : LibroDAO.obtenerLibros("", "", "", "", "")) {
+            if (lib.getIdlibro().equalsIgnoreCase(txtidlibro.getText())) {
+                txttitulo.setText(lib.getLib_titulo());
+            }
+        }
+        
+        
     }
 
     /**
@@ -63,6 +77,8 @@ public class FrmModificarLibro extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel5.setText("Paginas");
+
+        dtcfecpublicacion.setDateFormatString("yyyy/MM/dd");
 
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -124,6 +140,8 @@ public class FrmModificarLibro extends javax.swing.JFrame {
         jLabel9.setText("Modificar Libro");
 
         jLabel10.setText("Codigo");
+
+        txtidlibro.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -235,6 +253,12 @@ public class FrmModificarLibro extends javax.swing.JFrame {
 
     private void btnlimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlimpiarActionPerformed
         // TODO add your handling code here:
+        IdiomaDAO.llenarComboIdioma(cboidioma);
+        GeneroDAO.llenarComboGenero(cbogenero);
+        txtautor.setText(null);
+        txtcantidad.setText(null);
+        txtpaginas.setText(null);
+        txttitulo.setText(null);
     }//GEN-LAST:event_btnlimpiarActionPerformed
 
     private void btnbuscarAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarAutorActionPerformed
@@ -252,7 +276,34 @@ public class FrmModificarLibro extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarEditorialActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        // TODO add your handling code here:
+        String titulo=txttitulo.getText();
+        String genero=GeneroDAO.obtenercodigo(cbogenero.getSelectedItem().toString());
+        String idioma=IdiomaDAO.obtenercodigo(cboidioma.getSelectedItem().toString());
+        int paginas=0;
+        int cantidad=0;
+        String fechapub="";
+        
+        try {
+            fechapub=Reutil.FormatearFecha(dtcfecpublicacion);
+            paginas=Integer.parseInt(txtpaginas.getText());
+            cantidad=Integer.parseInt(txtcantidad.getText());
+        } catch (Exception e) {
+        }
+        
+        
+        int resp = JOptionPane.showConfirmDialog(this, "¿Esta seguro que desea grabar la Modificacion?", "Alerta!", JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE);
+        if (resp == JOptionPane.YES_OPTION){
+            if (dtcfecpublicacion.getDate()==null) {
+                JOptionPane.showMessageDialog(this,"Ingrese una fecha");
+            }else{
+                System.out.println("Marque si!");
+                System.out.println("Fecha "+fechapub);
+                
+                LibroDAO.ModificarrLibro(txtidlibro.getText(), titulo, autor, editorial,fechapub, genero, paginas, cantidad, idioma);
+                dispose();
+            }   
+        }
+        
     }//GEN-LAST:event_btnModificarActionPerformed
 
     /**
@@ -311,7 +362,7 @@ public class FrmModificarLibro extends javax.swing.JFrame {
     public static javax.swing.JTextField txtautor;
     private javax.swing.JTextField txtcantidad;
     public static javax.swing.JTextField txteditorial;
-    private javax.swing.JTextField txtidlibro;
+    public static javax.swing.JTextField txtidlibro;
     private javax.swing.JTextField txtpaginas;
     private javax.swing.JTextField txttitulo;
     // End of variables declaration//GEN-END:variables

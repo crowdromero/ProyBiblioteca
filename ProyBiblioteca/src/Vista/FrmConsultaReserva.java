@@ -5,6 +5,8 @@
  */
 package Vista;
 
+import Control.ReservaDAO;
+
 /**
  *
  * @author Xen
@@ -16,6 +18,7 @@ public class FrmConsultaReserva extends javax.swing.JPanel {
      */
     public FrmConsultaReserva() {
         initComponents();
+        ReservaDAO.llenarTablaReserva(jTable1,"" ,"");
     }
 
     /**
@@ -86,6 +89,11 @@ public class FrmConsultaReserva extends javax.swing.JPanel {
         jLabel3.setText("Fecha Fin");
 
         btnDevolucion.setText("Devolucion");
+        btnDevolucion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDevolucionActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Mostar sin devolucion");
 
@@ -164,6 +172,7 @@ public class FrmConsultaReserva extends javax.swing.JPanel {
 
     private void btnconsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnconsultarActionPerformed
         // TODO add your handling code here:
+        ReservaDAO.llenarTablaReserva(jTable1,"" ,"");
     }//GEN-LAST:event_btnconsultarActionPerformed
 
     private void txtlibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtlibroActionPerformed
@@ -173,6 +182,13 @@ public class FrmConsultaReserva extends javax.swing.JPanel {
     private void btnlimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlimpiarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnlimpiarActionPerformed
+
+    private void btnDevolucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolucionActionPerformed
+        // TODO add your handling code here:
+        int row = jTable1.getSelectedRow();
+        int id=Integer.parseInt(jTable1.getValueAt(row, 0).toString());
+        ReservaDAO.devolverReserva(id);
+    }//GEN-LAST:event_btnDevolucionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

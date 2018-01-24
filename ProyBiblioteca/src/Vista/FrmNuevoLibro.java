@@ -7,6 +7,9 @@ package Vista;
 
 import Control.GeneroDAO;
 import Control.IdiomaDAO;
+import Control.LibroDAO;
+import Control.Reutil;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -244,8 +247,26 @@ public class FrmNuevoLibro extends javax.swing.JPanel {
         String titulo=txttitulo.getText();
         String genero=GeneroDAO.obtenercodigo(cbogenero.getSelectedItem().toString());
         String idioma=IdiomaDAO.obtenercodigo(cboidioma.getSelectedItem().toString());
+        int paginas=0;
+        int cantidad=0;
+        String fechapub="";
+        try {
+            paginas=Integer.parseInt(txtpaginas.getText());
+            cantidad=Integer.parseInt(txtcantidad.getText());
+            fechapub=Reutil.FormatearFecha(dtcfecpublicacion);
+        } catch (Exception e) {
+        }
         
-        System.out.println(autor+" "+editorial+" "+genero+" "+idioma);
+        if (dtcfecpublicacion.getDate()==null) {
+                JOptionPane.showMessageDialog(this,"Ingrese una fecha");
+        }else{
+                System.out.println("Fecha "+fechapub  );
+                System.out.println(autor+" "+editorial+" "+genero+" "+idioma);
+                //call sp_Registrar_Libros('L00002','Nuevo Libro','A00004','E00002','1992/02/10','G00001',100,1,'I00001');
+                LibroDAO.RegistrarLibro(titulo, autor, editorial, "1992/10/29", genero, paginas, cantidad, idioma);
+        }        
+        
+        
         
     }//GEN-LAST:event_btnregistrarActionPerformed
 

@@ -5,6 +5,9 @@
  */
 package Vista;
 
+import Control.UsuarioDAO;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Xen
@@ -27,30 +30,35 @@ public class FrmNuevoUsuario extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtregistrar = new javax.swing.JButton();
-        txttitulo = new javax.swing.JTextField();
+        btnregistrar = new javax.swing.JButton();
+        txtdni = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        txtautor = new javax.swing.JTextField();
+        txtnombre = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        txteditorial = new javax.swing.JTextField();
+        txtapellido = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtgenero = new javax.swing.JTextField();
+        txtdireccion = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         btnlimpiar = new javax.swing.JButton();
-        txtgenero1 = new javax.swing.JTextField();
+        txttelefono = new javax.swing.JTextField();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder("Registrar Nuevo Usuario"));
 
-        txtregistrar.setText("Registrar");
+        btnregistrar.setText("Registrar");
+        btnregistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnregistrarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("DNI");
 
         jLabel2.setText("Nombre");
 
-        txteditorial.addActionListener(new java.awt.event.ActionListener() {
+        txtapellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txteditorialActionPerformed(evt);
+                txtapellidoActionPerformed(evt);
             }
         });
 
@@ -83,14 +91,14 @@ public class FrmNuevoUsuario extends javax.swing.JPanel {
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtautor)
-                            .addComponent(txttitulo)
-                            .addComponent(txteditorial)
-                            .addComponent(txtgenero, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
-                            .addComponent(txtgenero1)))
+                            .addComponent(txtnombre)
+                            .addComponent(txtdni)
+                            .addComponent(txtapellido)
+                            .addComponent(txtdireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                            .addComponent(txttelefono)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(173, 173, 173)
-                        .addComponent(txtregistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnregistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(174, 174, 174)
                         .addComponent(btnlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(196, Short.MAX_VALUE))
@@ -101,52 +109,68 @@ public class FrmNuevoUsuario extends javax.swing.JPanel {
                 .addGap(94, 94, 94)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txttitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtdni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtautor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txteditorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtapellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtgenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(txtgenero1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtregistrar)
+                    .addComponent(btnregistrar)
                     .addComponent(btnlimpiar))
                 .addContainerGap(128, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txteditorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txteditorialActionPerformed
+    private void txtapellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtapellidoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txteditorialActionPerformed
+    }//GEN-LAST:event_txtapellidoActionPerformed
 
     private void btnlimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlimpiarActionPerformed
         // TODO add your handling code here:
+        txtapellido.setText(null);
+        txtdni.setText(null);
+        txtdireccion.setText(null);
+        txtnombre.setText(null);
+        txttelefono.setText(null);
+        
     }//GEN-LAST:event_btnlimpiarActionPerformed
+
+    private void btnregistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregistrarActionPerformed
+        // TODO add your handling code here:
+        if (txtdni.getText().trim().length()<8 || txtnombre.getText().trim().length()<1 || txtapellido.getText().trim().length()<1 || txtdireccion.getText().trim().length()<1 || txttelefono.getText().trim().length()<9 ) {
+            JOptionPane.showMessageDialog(this,"Faltan datos necesarios");
+        }else{
+            UsuarioDAO.RegistrarUsuario(txtdni.getText(), txtnombre.getText(), txtapellido.getText(), txtdireccion.getText(), txttelefono.getText()) ;
+        }
+        
+    }//GEN-LAST:event_btnregistrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnlimpiar;
+    private javax.swing.JButton btnregistrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JTextField txtautor;
-    private javax.swing.JTextField txteditorial;
-    private javax.swing.JTextField txtgenero;
-    private javax.swing.JTextField txtgenero1;
-    private javax.swing.JButton txtregistrar;
-    private javax.swing.JTextField txttitulo;
+    private javax.swing.JTextField txtapellido;
+    private javax.swing.JTextField txtdireccion;
+    private javax.swing.JTextField txtdni;
+    private javax.swing.JTextField txtnombre;
+    private javax.swing.JTextField txttelefono;
     // End of variables declaration//GEN-END:variables
 }

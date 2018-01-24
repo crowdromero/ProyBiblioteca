@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -21,13 +22,14 @@ import javax.swing.table.DefaultTableModel;
  */
 public class LibroDAO {
     
-    public static void RegistrarDM(String titulo,String autor,String editorial,String fecha,String genero,int paginas,int cantidad,String idioma){
+    public static void RegistrarLibro(String titulo,String autor,String editorial,String fecha,String genero,int paginas,int cantidad,String idioma){
         
 		// Establecer conexión con la base de datos
                 Connection con=null;
 		PreparedStatement pst=null;
 				
 		try {
+                        //call sp_Registrar_Libros('L00002','Nuevo Libro','A00004','E00002','1992/02/10','G00001',100,1,'I00001');
 			con = MySqlConection.getConection();
 			String sql="{call sp_Registrar_Libros((?),(?),(?),(?),(?),(?),(?),(?),(?))}";
                         pst=con.prepareCall(sql);
@@ -54,8 +56,9 @@ public class LibroDAO {
 
     private static String GenerarCodigo() {
         String cod="";
-        
-                
+        int numero=obtenerLibros("", "", "", "", "").size()+1;
+        cod="L"+(10000+numero);        
+        System.out.println(cod);
         return cod;        
     }
     
@@ -85,21 +88,53 @@ public class LibroDAO {
 			 }
             
 		} catch (Exception e) {
-			System.out.println("error al obtener los Registros");
+			System.out.println("error al obtener los Registros de Libros");
 		}
 		return listadelibros;
 	}
     
     public static void llenarTablaMedico(JTable tabla,String titulo,String autor,String autorape,String editorial,String genero){
          
-         String CabeceraListado[]= new String[]{"Codigo Libro","Titulo","Nombre","Apellido","Fecha Inicio","Fecha Final","Licencia","Diagnostico"};
+         String CabeceraListado[]= new String[]{"Codigo Libro","Titulo","Autor","Editorial","Fecha de Publicacion","Genero","Cantidad"};
          DefaultTableModel dtm=new DefaultTableModel(CabeceraListado, 0);
          for (Libro x:obtenerLibros(titulo, autor, autorape, editorial, genero)) {
-               Object fila[] = { x.getIdlibro(),x.getLib_titulo(),x.getAutor_nombre(),x.getAutor_apellido(),x.getEd_nombre(),x.getLib_fecpub(),x.getGenero(),x.getLib_cantidad()}; 
+               Object fila[] = { x.getIdlibro(),x.getLib_titulo(),x.getAutor_nombre()+" "+x.getAutor_apellido(),x.getEd_nombre(),x.getLib_fecpub(),x.getGenero(),x.getLib_cantidad()}; 
                dtm.addRow(fila);
              
-        }
+          }
         tabla.setModel(dtm);
      }
     
+    public static void ModificarrLibro(String cod,String titulo,String autor,String editorial,String fecha,String genero,int paginas,int cantidad,String idioma){
+        
+		// Establecer conexión con la base de datos
+                Connection con=null;
+		PreparedStatement pst=null;
+				
+		try {
+                        //call sp_Modificar_Libros('L00002','Libro modificado','A00002','E00001','1992/02/10','G00001',50,1,'I00001');
+			con = MySqlConection.getConection();
+			String sql="{call sp_Modificar_Libros((?),(?),(?),(?),(?),(?),(?),(?),(?))}";
+                        pst=con.prepareCall(sql);
+                        pst.setString(1,cod);
+			pst.setString(2,titulo);
+			pst.setString(3,autor);
+			pst.setString(4,editorial);
+			pst.setString(5, fecha);
+                        pst.setString(6, genero);
+			pst.setInt(7,paginas);
+			pst.setInt(8,cantidad);
+			pst.setString(9,idioma);
+			
+			pst.executeQuery();
+			
+			System.out.println("Se Modifico el Registro");
+                        JOptionPane.showMessageDialog(null,"Se modifico correctamente el Libro");
+			 
+		} catch (Exception e) {
+			System.out.println("Error al modificar nuevo Libro");
+		}
+				
+	    	
+     } 
 }

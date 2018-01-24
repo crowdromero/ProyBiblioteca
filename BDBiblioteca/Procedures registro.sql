@@ -77,7 +77,7 @@ inner join idioma as i
 on i.ididioma=l.lib_idioma
 where l.lib_titulo like CONCAT ('%', titulo, '%')
 and a.autor_nombre like CONCAT ('%', autornom, '%')
-and l.lib_titulo like CONCAT ('%', autorape, '%')
+and a.autor_apellido like CONCAT ('%', autorape, '%')
 and e.ed_nombre like CONCAT ('%', editorial, '%')
 and g.genero like CONCAT ('%', genero, '%');
 end&&
@@ -85,6 +85,7 @@ delimiter ;
 
 call sp_consultar_Libro('','','','','');
 
+select * from libro;
 
 
 
@@ -101,13 +102,12 @@ create procedure sp_Registrar_Libros(in idLibro varchar(6),in lib_titulo varchar
 									in lib_genero varchar(6),in lib_paginas int,in lib_cantidad int,in lib_idioma varchar(6))
 begin
 INSERT INTO `BD_BiBLIOTECA`.`Libro` (`idLibro`, `lib_titulo`, `lib_autor`, `lib_editorial`, `lib_fecpub`, `lib_genero`, `lib_paginas`, `lib_cantidad`, `lib_idioma`, `lib_estado`)
-VALUES (idLibro, lib_titulo, lib_autor, lib_editorial, lib_fecpub, lib_genero, lib_paginas, lib_cantidad, lib_cantidad, 1);
+VALUES (idLibro, lib_titulo, lib_autor, lib_editorial, lib_fecpub, lib_genero, lib_paginas, lib_cantidad, lib_idioma, 1);
 end&&
 delimiter ;
 
 call sp_Registrar_Libros('L00002','Nuevo Libro','A00004','E00002','1992/02/10','G00001',100,1,'I00001');
 
-select * from libro;
 
 
 
@@ -130,7 +130,7 @@ where l.idLibro=id;
 end&&
 delimiter ;
 
-call sp_Modificar_Libros('L00002','Nuevo Libro modificado','A00004','E00002','1992/02/10','G00001',100,1,'I00001');
+call sp_Modificar_Libros('L00002','Libro modificado','A00002','E00001','1992/02/10','G00001',50,1,'I00001');
 
 select * from libro;
 
